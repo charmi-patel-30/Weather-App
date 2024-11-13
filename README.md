@@ -33,6 +33,8 @@ Enter a city name in the search bar to get current weather information for that 
 ## Screenshot
 
 ![App Screenshot](Github/wa.png)
+![App Screenshot](Github/wa2.png)
+![App Screenshot](Github/wa3.png)
 
 ## License
 
