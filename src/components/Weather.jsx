@@ -11,7 +11,7 @@ import wind_icon from "../assets/wind.png";
 
 const Weather = () => {
   const inputRef = useRef();
-  const [weatherData, setWeatherData] = useState(false);
+  const [weatherData, setWeatherData] = useState(null);
 
   const allIcons = {
     "01d": clear_icon,
@@ -31,7 +31,7 @@ const Weather = () => {
   };
 
   const search = async (city) => {
-    if (city === "") {
+    if (!city) {
       alert("Enter City Name");
       return;
     }
@@ -47,20 +47,19 @@ const Weather = () => {
         alert(data.message);
         return;
       }
-      console.log(data);
 
       const icon = allIcons[data.weather[0].icon] || clear_icon;
       setWeatherData({
         humidity: data.main.humidity,
         windSpeed: data.wind.speed,
-        // temperature: Math.floor(data.main.temp),
         temperature: Math.floor(data.main.temp),
         location: data.name,
         icon: icon,
+        description: data.weather[0].description,
       });
     } catch (error) {
-      setWeatherData(false);
-      console.error("Error in fetching weather data");
+      setWeatherData(null);
+      console.error("Error fetching weather data", error);
     }
   };
 
@@ -69,50 +68,59 @@ const Weather = () => {
   }, []);
 
   return (
-    <div className="weather">
-      <div className="search-bar">
-        <input ref={inputRef} type="text" placeholder="Search" />
-        <img
-          src={search_icon}
-          alt="search icon"
-          onClick={() => search(inputRef.current.value)}
-        />
-      </div>
-      {weatherData ? (
-        <>
+    <div className="app">
+      {/* Header */}
+      <header className="header">
+        <h1 className="app-name"></h1>
+        <div className="search-bar">
+          <input ref={inputRef} type="text" placeholder="Enter city" />
           <img
-            src={weatherData.icon}
-            alt="weather icon"
-            className="weather-icon"
+            src={search_icon}
+            alt="search icon"
+            onClick={() => search(inputRef.current.value)}
           />
-          <p className="temperature">{weatherData.temperature}°C</p>
-          <p className="location">{weatherData.location}</p>
+        </div>
+      </header>
 
-          <div className="weather-data-row">
-            <div className="weather-data">
-              <div className="col">
-                <img src={humidity_icon} alt="humidity icon" />
-                <div>
+      {/* Main Weather Info */}
+      <main className="weather-container">
+        {weatherData ? (
+          <>
+            <div className="weather-details">
+              <img
+                src={weatherData.icon}
+                alt="weather icon"
+                className="weather-icon"
+              />
+              <h2 className="temperature">{weatherData.temperature}°C</h2>
+              <h3 className="location">{weatherData.location}</h3>
+              <p className="description">{weatherData.description}</p>
+
+              <div className="additional-info">
+                <div className="info">
+                  <img src={humidity_icon} alt="humidity icon" />
                   <p>{weatherData.humidity} %</p>
                   <span>Humidity</span>
                 </div>
-              </div>
-            </div>
-
-            <div className="weather-data">
-              <div className="col">
-                <img src={wind_icon} alt="wind icon" />
-                <div>
+                <div className="info">
+                  <img src={wind_icon} alt="wind icon" />
                   <p>{weatherData.windSpeed} Km/h</p>
                   <span>Wind Speed</span>
                 </div>
               </div>
             </div>
-          </div>
-        </>
-      ) : (
-        <></>
-      )}
+          </>
+        ) : (
+          <p>Loading weather information...</p>
+        )}
+      </main>
+
+      {/* Footer */}
+      <footer className="footer">
+        <p>
+          &copy; {new Date().getFullYear()} Weather App. All rights reserved.
+        </p>
+      </footer>
     </div>
   );
 };

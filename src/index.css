@@ -1,14 +1,71 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
 
-.app{
+:root {
+  --background-color: #121212;
+  --primary-color: #1e90ff;
+  --text-color: #e0e0e0;
+  --accent-color: #1e90ff;
+  --light-bg: #1f1f1f;
+  --footer-bg: #181818;
+  --footer-text: #888;
+}
+
+body {
   min-height: 100vh;
-  display: grid;
-  background: #e2d4ff;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.app {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+header,
+footer {
+  background-color: var(--light-bg);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+footer {
+  text-align: center;
+  color: var(--footer-text);
+  background-color: var(--footer-bg);
+  padding: 15px 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .app {
+    padding: 15px;
+    gap: 15px;
+  }
+  header, footer {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app {
+    padding: 10px;
+  }
+  header, footer {
+    padding: 10px;
+  }
 }

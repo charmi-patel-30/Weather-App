@@ -1,76 +1,180 @@
-.weather {
-    place-self: center;
-    padding: 40px;
-    border-radius: 10px;
-    background-image: linear-gradient(45deg, #2f4680, #500ae4);
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .header h1 {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1.8em;
+  }
+  
+  .search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .search-bar input {
+    height: 40px;
+    padding: 0 15px;
+    border: 1px solid var(--primary-color);
+    border-radius: 20px;
+    outline: none;
+    background-color: #333;
+    color: var(--text-color);
+  }
+  
+  .search-bar img {
+    width: 35px;
+    padding: 8px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    cursor: pointer;
+  }
+  
+  .app-name::after {
+    content: "Weather App"; /* Full name */
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1.8em;
+  }
+
+  /* Main Weather Container */
+  .weather-container {
+    background-color: var(--light-bg);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.search-bar {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.search-bar input {
-    height: 50px;
-    border: none;
-    outline: none;
-    border-radius: 40px;
-    padding-left: 25px;
-    color: #626262;
-    background: #ebfffc;
-    font-size: 18px;
-}
-
-.search-bar img {
-    width: 50px;
-    padding: 15px;
-    border-radius: 50%;
-    background: #ebfffc;
-    cursor: pointer;
-}
-
-.weather-icon {
-    width: 150px;
-    margin: 30px 0;
-}
-
-.temperature {
-    color: #fff;
-    font-size: 80px;
-    line-height: 1;
-}
-
-.location {
-    color: #fff;
-    font-size: 40px;
-}
-
-.weather-data-row {
-    display: flex;
     gap: 20px;
-    width: 100%;
-    justify-content: center;
-    margin-top: 40px;
-    color: #fff;
-}
-
-.weather-data .col {
+    text-align: center;
+  }
+  
+  .weather-details {
     display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    font-size: 22px;
-}
-
-.weather-data .col span {
-    display: block;
-    font-size: 16px;
-}
-
-.weather-data .col img {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .weather-icon {
+    width: 100px;
+    margin-bottom: 10px;
+  }
+  
+  .temperature {
+    color: var(--primary-color);
+    font-size: 60px;
+    font-weight: 600;
+  }
+  
+  .location {
+    font-size: 30px;
+    font-weight: 500;
+  }
+  
+  .description {
+    font-size: 18px;
+    color: var(--text-color);
+    font-style: italic;
+  }
+  
+  /* Additional Info */
+  .additional-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 18px;
+    padding: 10px;
+    color: var(--text-color);
+  }
+  
+  .info img {
     width: 25px;
-    margin-top: 10px;
-}
+    margin-bottom: 5px;
+  }
+  
+  .footer {
+    font-size: 14px;
+    color: var(--footer-text);
+  }
+  
+  /* Responsive adjustments */
+  
+  /* Tablet screens */
+  @media (max-width: 768px) {
+    .temperature {
+      font-size: 50px;
+    }
+    .location {
+      font-size: 24px;
+    }
+    .description {
+      font-size: 16px;
+    }
+    .additional-info {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+  
+  /* Mobile screens */
+  @media (max-width: 480px) {
+    .header h1 {
+      font-size: 1.5em;
+    }
+    .search-bar input {
+      height: 35px;
+      padding: 0 10px;
+      font-size: 0.9em;
+    }
+    .search-bar img {
+      width: 30px;
+    }
+    .weather-icon {
+      width: 80px;
+    }
+    .temperature {
+      font-size: 40px;
+    }
+    .location {
+      font-size: 22px;
+    }
+    .description {
+      font-size: 14px;
+    }
+    .info {
+      font-size: 16px;
+    }
+    .additional-info {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+  
+  /* For tablet and smaller screens */
+@media (max-width: 768px) {
+    .app-name::after {
+      content: "WA."; /* Short name */
+      font-size: 1.5em;
+    }
+  }
+  
+  /* For mobile screens */
+  @media (max-width: 480px) {
+    .app-name::after {
+      content: "WA."; /* Short name */
+      font-size: 1.2em;
+    }
+  }
