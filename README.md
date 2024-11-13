@@ -1,6 +1,6 @@
 # Weather App
 
-![Weather App Screenshot](github/wa.png)
+![Weather App Screenshot](Github/wa.png)
 
 This is a **Weather App** built using **React** with **Vite** as the build tool. It leverages the **OpenWeather API** to fetch real-time weather data based on user input for cities around the world.
 
@@ -32,7 +32,7 @@ Enter a city name in the search bar to get current weather information for that 
 
 ## Screenshot
 
-![App Screenshot](github/wa.png)
+![App Screenshot](Github/wa.png)
 
 ## License
 
